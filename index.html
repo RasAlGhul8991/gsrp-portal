@@ -65,6 +65,61 @@
       margin-top: 50px;
       color: #888;
     }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .form-group input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .form-group input[type="submit"]:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
 <body>
@@ -81,7 +136,7 @@
   <div class="section">
     <h2>LEO/Staff</h2>
     <div class="button-container">
-      <button class="btn" onclick="window.open('https://your-google-form-link', '_blank')">Punishment Log</button>
+      <button class="btn" onclick="openModal()">Punishment Log</button>
       <button class="btn" onclick="window.open('https://your-google-form-link', '_blank')">Needs Yeet</button>
       <button class="btn" onclick="window.open('https://your-google-form-link', '_blank')">Access Request</button>
     </div>
@@ -101,6 +156,70 @@
     Georgia State Roleplay. Cuz We Can.<br>EST: 2018
   </footer>
 </div>
+
+<!-- Modal -->
+<div id="punishmentModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Punishment Log</h2>
+    <form>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="issuer-id">Issuer's Discord ID:</label>
+        <input type="text" id="issuer-id" name="issuer-id" required>
+      </div>
+      <div class="form-group">
+        <label for="offender-id">Offender's Discord ID:</label>
+        <input type="text" id="offender-id" name="offender-id" required>
+      </div>
+      <div class="form-group">
+        <label>Punishment:</label>
+        <input type="radio" id="strike" name="punishment" value="Strike" required>
+        <label for="strike">Strike</label>
+        <input type="radio" id="removal-ban" name="punishment" value="Removal (With Ban)" required>
+        <label for="removal-ban">Removal (With Ban)</label>
+        <input type="radio" id="removal-noban" name="punishment" value="Removal (Without Ban)" required>
+        <label for="removal-noban">Removal (Without Ban)</label>
+      </div>
+      <div class="form-group">
+        <label for="reason">Reason for Punishment:</label>
+        <textarea id="reason" name="reason" rows="4" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="evidence">Evidence:</label>
+        <input type="text" id="evidence" name="evidence" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openModal() {
+    document.getElementById('punishmentModal').style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('punishmentModal').style.display = 'none';
+  }
+
+  // Close modal when clicking outside of it
+  window.onclick = function(event) {
+    const modal = document.getElementById('punishmentModal');
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  }
+</script>
 
 </body>
 </html>
