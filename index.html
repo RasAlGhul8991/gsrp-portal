@@ -60,6 +60,37 @@
     .btn:hover {
       background-color: #ccc;
     }
+    form {
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .submit-btn {
+      background-color: #ff5c5c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #e04e4e;
+    }
     footer {
       text-align: center;
       margin-top: 50px;
@@ -81,7 +112,7 @@
   <div class="section">
     <h2>LEO/Staff</h2>
     <div class="button-container">
-      <button class="btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSf2vBbmFYeqIKEgR48KdZC9q0FOfUXKMO92Gvonpo0mi6Puhw/viewform', '_blank')">Punishment Log</button>
+      <a class="btn" href="#punishmentForm">Punishment Log</a>
       <button class="btn" onclick="window.open('https://your-google-form-link', '_blank')">Needs Yeet</button>
       <button class="btn" onclick="window.open('https://your-google-form-link', '_blank')">Access Request</button>
     </div>
@@ -95,6 +126,36 @@
       <button class="btn" onclick="window.open('https://your-google-form-link', '_blank')">Training Log</button>
       <button class="btn" onclick="window.open('https://your-google-form-link', '_blank')">Ride Along Log</button>
     </div>
+  </div>
+
+  <div class="section" id="punishmentForm">
+    <h2>Punishment Log Form</h2>
+    <form action="#" method="post">
+      <label for="issuerId">Issuer Discord ID</label>
+      <input type="text" id="issuerId" name="issuerId" required>
+
+      <label for="offenderId">Offender Discord ID</label>
+      <input type="text" id="offenderId" name="offenderId" required>
+
+      <label for="punishment">Punishment</label>
+      <select id="punishment" name="punishment" required>
+        <option value="">-- Select Punishment --</option>
+        <option value="Strike">Strike</option>
+        <option value="Removal (With Ban)">Removal (With Ban)</option>
+        <option value="Removal (Without Ban)">Removal (Without Ban)</option>
+      </select>
+
+      <label for="reason">Reason for Punishment</label>
+      <textarea id="reason" name="reason" rows="4" required></textarea>
+
+      <label for="evidence">Evidence (Put N/A if none)</label>
+      <input type="text" id="evidence" name="evidence" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
   </div>
 
   <footer>
